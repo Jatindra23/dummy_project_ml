@@ -9,7 +9,7 @@
         1. Make sure you have git installed in your system
         2. open terminal in your project folder and write these commands
         3. $ git init
-        4. $ git add .
+        4. $ git add .  or if yopu want to add more than one modified file then use $git add --all
         5. $ git commit -m "<commit_message>"
         6. $ git remote add origin git@github.com:username/new_repo or $ git remote add origin https://github.com/github_username/repo_name.git
         7. $ git push -u origin master 
