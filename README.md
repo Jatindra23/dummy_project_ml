@@ -1,11 +1,11 @@
-#This is a Machine learning Projet 
+- This is a Machine learning Projet 
 
-    ##->some basic instructions:
+ - some basic instructions:
         1.to run the setup.py file you have to use python setup.py install in cmd
 
 
 
-    ##-> steps for git 
+    - steps for git 
         1. Make sure you have git installed in your system
         2. open terminal in your project folder and write these commands
         3. $ git init
