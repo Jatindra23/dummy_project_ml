@@ -4,4 +4,5 @@ gunicorn
 pandas
 setuptools
 typing
+PyYAML
 -e .
