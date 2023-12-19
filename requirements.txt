@@ -5,4 +5,5 @@ pandas
 setuptools
 typing
 PyYAML
+datetime
 -e .
