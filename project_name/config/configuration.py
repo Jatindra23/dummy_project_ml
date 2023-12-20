@@ -5,6 +5,10 @@ from project_name.utils.utils import read_yaml_file
 
 from project_name.constants import *
 
+from project_name.exception import ProjectException
+
+import sys, os
+
 class ConfigurationManager:
     def __init__(self,
          config_file_path:str=CONFIG_FILE_PATH ,   
@@ -31,7 +35,17 @@ class ConfigurationManager:
     def get_trainer_pusher_model(self)->ModelPusherConfig:
         pass
 
-    def get_trainer_pipeline_config(self)->TrainingPipelineConfig:
-        pass
-    
+    def get_training_pipeline_config(self)->TrainingPipelineConfig:
+        try:
+            
+            training_pipeline_config=self.config_info[TRAINING_PIPELINE_CONFIG_KEY]
+            aritfact_dir = os.path.join(ROOT_DIR,
+            training_pipeline_config[TRAINING_PIPLINE_NAME_KEY],
+            training_pipeline_config[TRAINING_PIPELINE_ARTIFACT_DIR_KEY]
+            )
 
+
+
+        except Exception as e:
+            raise ProjectException(e,sys) from e
+       
