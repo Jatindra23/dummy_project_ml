@@ -4,13 +4,13 @@ from datetime import datetime
 
 LOG_DIR = "logs"
 
-current_timer_stamp = f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
+current_time_stamp = f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
 
 log_file_name = f"log_{current_time_stamp}.log"
 
 os.makedirs(LOG_DIR,exist_ok = True)
 
-log_file_path = os.path.jon(LOG_DIR,log_file_path)
+log_file_path = os.path.jon(LOG_DIR,log_file_name)
 
 logging.basicConfig(filename = log_file_path,
 filemode = "w",
