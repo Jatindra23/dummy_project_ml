@@ -12,7 +12,7 @@ data_ingestion_config:
 
 
 data_validation_config:
-  schemam_file_name: schema.yaml
+  schema_file_name: schema.yaml
 
 
 data_transformation:
