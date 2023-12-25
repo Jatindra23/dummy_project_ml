@@ -13,7 +13,7 @@
         4. $ git add .  or if yopu want to add more than one modified file then use $git add --all
         5. $ git commit -m "<commit_message>"
         6. $ git remote add origin git@github.com:username/new_repo or $ git remote add origin https://github.com/github_username/repo_name.git
-        7. $ git push -u origin master 
+        7. $ git push -u origin main 
         8. If you have want to push in main branch then after  step-1 write this command-
                 $ git checkout -b main
                 then do rest of the steps
