@@ -154,31 +154,120 @@ class ConfigurationManager:
 
             )
 
-            DataTransformationConfig(
-                transformed_test_dir=
+            data_transformation_config = DataTransformationConfig(
+
+                transformed_test_dir=transformed_test_dir,
+                transformed_train_dir=transformed_train_dir,
+                preprocessed_object_file_path=preprocessed_object_file_path
+
             )
 
+            logging.info(f"DataTransformationConfig: {data_transformation_config}")
 
         except Exception as e:
             raise ProjectException(e,sys) from e
 
-    def get_model_trainer_config(self)->ModelTrainerConfig:
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
         try:
-            model_trainer_config = self.config_info
+            model_trainer_config = self.config_info[MODEL_TRAINER_CONFIG_KEY]
+            artifact_dir = self.training_pipeline_config.artifact_dir
 
+            model_trainer_artifact_dir = os.path.join(
+
+                artifact_dir,
+                model_trainer_config[MODEL_TRAINER_ARTIFACT_DIR],
+                self.time_stamp 
+
+            )
+
+            trained_model_dir = os.path.join(
+
+                model_trainer_artifact_dir,
+                model_trainer_config[MODEL_TRAINER_TRAINED_MODEL_DIR]
+
+            )
+
+            trained_model_file_path = os.path.join(
+
+                trained_model_dir,
+                model_trainer_config[MODEL_TRAINER_MODEL_FILE_NAME_PATH]
+
+            )
+
+            base_accuracy =model_trainer_config[MODEL_TRAINER_BASE_ACCURACY]
+
+            model_trainer_config = ModelTrainerConfig(
+
+                trained_model_file_path=trained_model_file_path,
+                base_accuracy=base_accuracy
+
+            )
+
+            logging.info(f"model_trainer_config: {model_trainer_config}")
+                         
         except Exception as e:
             raise ProjectException(e,sys) from e
 
     def get_model_evaluation_config(self)->ModelEvaluationConfig:
         try:
-            model_evaluation_config = self.config_info
+            model_evaluation_config = self.config_info[MODEL_EVALUATION_CONFIG_KEY]
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            model_evaluation_artifact_dir = os.path.join(
+
+                artifact_dir,
+                model_evaluation_config[MODEL_EVALUATION_ARTIFACT_DIR],
+                self.time_stamp
+
+            )
+
+            model_evaluation_file_name_path = os.path.join(
+                model_evaluation_artifact_dir,
+                model_evaluation_file_name_path
+            )
+
+
+
+
+            model_evaluation_config = ModelEvaluationConfig(
+                model_evaluation_file_path=model_evaluation_file_name_path,
+                time_stamp=self.time_stamp
+            )
+
+            logging.info(f"model_evaluation_config: {model_evaluation_config}")
 
         except Exception as e:
             raise ProjectException(e,sys) from e
 
-    def get_trainer_pusher_model(self)->ModelPusherConfig:
+    def get_model_pusher_model(self)->ModelPusherConfig:
         try:
-            trainer_pusher_config = self.config_info
+            model_pusher_config = self.config_info[MODEL_PUSHER_CONFIG_KEY]
+
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            model_pusher_artifact_dir = os.path.join(
+
+                artifact_dir,
+                model_pusher_config[MODEL_PUSHER_ARTIFACT_DIR],
+                self.time_stamp
+
+            )
+
+
+            model_pusher_export_dir_path = os.path.join(
+
+                model_pusher_artifact_dir,
+                model_pusher_config[MODEL_PUSHER_EXPORT_DIR_KEY]
+                
+            )
+
+            model_pusher_config = ModelPusherConfig(
+
+                export_dir_path=model_pusher_export_dir_path
+
+            )
+
+            logging.info(f"model_pusher_config: {model_pusher_config}")
 
         except Exception as e:
             raise ProjectException(e,sys) from e

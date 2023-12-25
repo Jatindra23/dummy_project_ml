@@ -62,7 +62,7 @@ MODEL_EVALUATION_CONFIG_KEY= "model_evaluation_config"
 MODEL_EVALUATION_FILE_NAME_PATH = "model_evaluation.yaml"
 
 
-#model_pusher_config Variable
+#trainer_pusher_config Variable
 
 MODEL_PUSHER_CONFIG_KEY = "model_pusher_config"
 MODEL_PUSHER_ARTIFACT_DIR = "modle_pusher"
