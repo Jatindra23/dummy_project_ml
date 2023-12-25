@@ -111,7 +111,53 @@ class ConfigurationManager:
 
     def get_data_transformation_config(self)->DataTransformationConfig:
         try:
-            data_transformation_config = self.config_info
+            artifact_dir = self.training_pipeline_config.artifact_dir
+            data_transformation_config = self.config_info[DATA_TRANSFORM_CONFIG_KEY]
+
+            data_transformation_artifact_dir = os.path.join(
+                artifact_dir,
+                data_transformation_config[DATA_TRANSFORM_ARTIFACT_DIR],
+                self.time_stamp
+            )
+
+            transformed_dir = os.path.join(
+
+                data_transformation_artifact_dir,
+                data_transformation_config[DATA_TRANSFORM_DIR_KEY]
+
+            )
+
+            transformed_train_dir = os.path.join(
+
+                transformed_dir,
+                data_transformation_config[DATA_TRANSFORM_TRAIN_DIR_KEY]
+
+            )
+
+            transformed_test_dir = os.path.join(
+                transformed_dir,
+                data_transformation_config[DATA_TRANSFORM_TEST_DIR_KEY]
+
+            )
+
+            preprocessing_dir  = os.path.join(
+
+                data_transformation_artifact_dir,
+                data_transformation_config[DATA_TRANSFORM_PREPROSSESING_DIR_KEY]
+
+            )
+
+            preprocessed_object_file_path = os.path.join(
+
+                preprocessing_dir,
+                data_transformation_config[DATA_TRANSFORM_PREPROCESSED_OBJECT_FILE_NAME_PATH]
+
+            )
+
+            DataTransformationConfig(
+                transformed_test_dir=
+            )
+
 
         except Exception as e:
             raise ProjectException(e,sys) from e
